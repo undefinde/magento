@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Lcc_Helloworld>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Lcc_Helloworld>
+    </modules>
+</config>
