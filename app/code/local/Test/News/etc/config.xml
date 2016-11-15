@@ -1,0 +1,49 @@
+<config>
+    <modules>
+        <Test_News>
+            <version>0.1.0</version>
+        </Test_News>
+    </modules>
+    <frontend>
+        <routers>
+            <news>
+                <use>standard</use>
+                <args>
+                    <module>Test_News</module>
+                    <frontName>news</frontName>
+                </args>
+            </news>
+        </routers>
+    </frontend>
+    <global>
+        <models>
+            <news><!-- 启用模型-->
+                <class>Test_News_Model</class> <!-- <class />标签的内容是基本类名，所有Helloworld模块的模型都用这个基本类名,命名方式如下
+Packagename_Modulename_Model -->
+                <resourceModel>news_mysql4</resourceModel>
+                <!-- resourceModel指明了这个模块的模型要用哪个资源模型-->
+            </news>
+            <news_mysql4><!-- 启用资源模型-->
+                <class>Test_News_Model_Resource_Mysql4</class>
+                <entities>    <!-- 为资源模型添加实体-->
+                    <blogpost>
+                        <table>blog_posts</table>
+                    </blogpost>
+                </entities>
+            </news_mysql4>
+        </models>
+        <resources><!-- 为资源模型设置读写适配器-->
+            <!-- 可以从数据库中取数据了，但是我们却没有为资源模型设置读写适配器，怎么回事呢？原因很简单，那就是因为Magento会为没有适配器的资源模型启用默认适配器。我们也可以显式的配置默认的适配器-->
+            <news_write>
+                <connection>
+                    <use>default_write</use>
+                </connection>
+            </news_write>
+            <news_read>
+                <connection>
+                    <use>default_read</use>
+                </connection>
+            </news_read>
+        </resources>
+    </global>
+</config>

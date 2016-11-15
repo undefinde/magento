@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Test_News>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Test_News>
+    </modules>
+</config>

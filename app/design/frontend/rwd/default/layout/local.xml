@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <news_index_index>
+        <reference name="root">
+            <block type="news/news" name="root" output="toHtml" template="news/blog_posts.phtml"></block>
+        </reference>
+    </news_index_index>
+</layout>

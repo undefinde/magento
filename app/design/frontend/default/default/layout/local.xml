@@ -1,0 +1,8 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <!-- “type”属性，这个属性其实是一个URI-->
+            <block type="page/html" name="root" output="toHtml" template="../../../../../code/local/Test/News/simple_page.phtml" />
+        </reference>
+    </default>
+</layout>

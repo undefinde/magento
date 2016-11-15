@@ -1,25 +1,22 @@
 <?php
 
-class Lcc_Configviewer_Model_Observer
-{
+class Lcc_Configviewer_Model_Observer {
     const FLAG_SHOW_CONFIG = 'showConfig';
     const FLAG_SHOW_CONFIG_FORMAT = 'showConfigFormat';
     private $request;
-    public function checkForConfigRequest($observer)
-    {
-        $this->request = $observer->getEvent()-getData('front')->getRequest();
-
-        if ($this->request->{self::FLAG_SHOW_CONFIG} === 'true') {
+    public function checkForConfigRequest($observer) {
+        //$this->setHeader();
+        //$this->outputConfig();
+        $this->request = $observer->getEvent()->getData('front')->getRequest();
+        if($this->request->{self::FLAG_SHOW_CONFIG} === 'true'){
             $this->setHeader();
             $this->outputConfig();
         }
     }
-
-    private function setHeader()
-    {
+    private function setHeader() {
         $format = isset($this->request->{self::FLAG_SHOW_CONFIG_FORMAT}) ?
             $this->request->{self::FLAG_SHOW_CONFIG_FORMAT} : 'xml';
-        switch ($format) {
+        switch($format){
             case 'text':
                 header("Content-Type: text/plain");
                 break;
@@ -27,9 +24,7 @@ class Lcc_Configviewer_Model_Observer
                 header("Content-Type: text/xml");
         }
     }
-
-    private function outputConfig()
-    {
+    private function outputConfig() {
         die(Mage::app()->getConfig()->getNode()->asXML());
     }
 }

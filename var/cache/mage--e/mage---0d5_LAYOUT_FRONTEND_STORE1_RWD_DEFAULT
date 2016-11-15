@@ -5186,4 +5186,9 @@
       <block type="moneybookers/placeform" name="moneybookers_placeform" template="moneybookers/placeform.phtml"/>
    </reference>
 </moneybookers_processing_placeform>
+<news_index_index>
+   <reference name="root">
+      <block type="news/news" name="root" output="toHtml" template="news/blog_posts.phtml"/>
+   </reference>
+</news_index_index>
 </layouts>
