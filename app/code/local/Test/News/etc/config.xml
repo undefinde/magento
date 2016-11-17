@@ -31,6 +31,19 @@ Packagename_Modulename_Model -->
                     </blogpost>
                 </entities>
             </news_mysql4>
+            <news-eav> <!-- 启用eav模型-->
+                <class>Test_News_Model</class>
+                <resourceModel>news-eav_mysql4</resourceModel>
+            </news-eav>
+            <!-- 定义资源模型-->
+            <news-eav_mysql4>
+                <class>Test_News_Model_Resource_Eav_Mysql4</class>
+                <entities>
+                    <blogpost>
+                        <table>eavblog_posts</table>
+                    </blogpost>
+                </entities>
+            </news-eav_mysql4>
         </models>
         <resources><!-- 为资源模型设置读写适配器-->
             <!-- 可以从数据库中取数据了，但是我们却没有为资源模型设置读写适配器，怎么回事呢？原因很简单，那就是因为Magento会为没有适配器的资源模型启用默认适配器。我们也可以显式的配置默认的适配器-->
@@ -44,6 +57,62 @@ Packagename_Modulename_Model -->
                     <use>default_read</use>
                 </connection>
             </news_read>
+            <!-- 在配置文件中添加资源配置-->
+            <news_setup>
+                <setup>
+                    <module>Test_News</module>
+                    <class>Test_News_Model_Resource_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </news_setup>
+            <news-eav_write>
+                <connection>
+                    <use>default_write</use>
+                </connection>
+            </news-eav_write>
+            <news-eav_read>
+                <connection>
+                    <use>default_read</use>
+                </connection>
+            </news-eav_read>
+            <news-eav_setup>
+                <setup>
+                    <module>Test_News</module>
+                    <class>Test_News_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </news-eav_setup>
         </resources>
+        <helpers><!-- Magento帮助类-->
+            <news>
+                <class>Test_News_Helper</class>
+            </news>
+        </helpers>
     </global>
+    <adminhtml>
+        <!-- 添加ACL权限-->
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <news_options>
+                                            <title>Store News Module Section</title>
+                                        </news_options>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
 </config>

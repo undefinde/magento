@@ -1,8 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <layout version="0.1.0">
-    <news_index_index>
+    <default>
         <reference name="root">
-            <block type="news/news" name="root" output="toHtml" template="news/blog_posts.phtml"></block>
+            <block type="page/html" name="root" output="toHtml" template="news/page.phtml" />
         </reference>
+    </default>
+    <news_index_index>
+        <reference name="content">
+            <block type="core/template" template="news/simple_page.phtml" />
+        </reference>
+        <!-- “type”属性，这个属性其实是一个URI-->
     </news_index_index>
 </layout>

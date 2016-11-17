@@ -58,4 +58,15 @@ class Test_News_IndexController extends Mage_Core_Controller_Front_Action
         $this->loadLayout();
         $this->renderLayout();
     }
+
+    public function loadConfigAction()
+    {
+        header('Content-Type: text/xml');
+        echo $config = Mage::getConfig()
+            ->loadModulesConfiguration('system.xml')
+            ->getNode()
+            ->asXML();
+        var_dump($config);
+        exit;
+    }
 }
